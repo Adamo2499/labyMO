@@ -10,12 +10,29 @@ b) Zdefinuj funkcję g(x) = 2x<sub>1</sub>+3x<sub>2</sub>-7x<sub>3</sub>-6
 ```matlab
 g(x1,x2,x3,x4) = 2*x1+3*x2-7*x3-6
 ```
-c) Zdefinuj funkcję Lagrange'a L(x,lambda)
+c) Zdefinuj funkcję Lagrange'a L(x,lambda) = f+lambda*g
 ```matlab
-
+L(x1, x2, x3, x4, lambda) = f + lambda * g
 ```
 d) Oblicz pochodną funkcji L(x,lambda) względem każdej zmiennej występującej w równaniu (wykorzystaj funkcję **diff()**)
 ```matlab
-
+p1 = diff(L, x1); %pochodna funkcji L względem zmiennej x1
+p2 = diff(L, x2);
+p3 = diff(L, x3);
+p4 = diff(L, x4);
+p5 = diff(L, lambda);
 ```
-e)
+e) Wyznacz wartości przy poszczególnych niewiadomych równania przy pomocy metody macierzowej
+```matlab
+
+A = [
+        p1(1, 0, 0, 0, 0) p1(0, 1, 0, 0, 0), p1(0, 0, 1, 0, 0) p1(0, 0, 0, 1, 0) p1(0, 0, 0, 0, 1);
+        p2(1, 0, 0, 0, 0) p2(0, 1, 0, 0, 0), p2(0, 0, 1, 0, 0) p2(0, 0, 0, 1, 0) p2(0, 0, 0, 0, 1);
+        p3(1, 0, 0, 0, 0) p3(0, 1, 0, 0, 0), p3(0, 0, 1, 0, 0) p3(0, 0, 0, 1, 0) p3(0, 0, 0, 0, 1);
+        p4(1, 0, 0, 0, 0) p4(0, 1, 0, 0, 0), p4(0, 0, 1, 0, 0) p4(0, 0, 0, 1, 0) p4(0, 0, 0, 0, 1);
+        p5(1, 0, 0, 0, 0) p5(0, 1, 0, 0, 0), p5(0, 0, 1, 0, 0) p5(0, 0, 0, 1, 0) p5(0, 0, 0, 0, 1);
+    ] %Macierz współczynników
+    B = [0 0 0 0 6]; % Macierz rozwiązań
+    b = B' % Transponowanie macierzy
+    wynik = A\b % Uzyskanie wartości x1,x2,x3,x4
+```
