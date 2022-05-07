@@ -1,4 +1,4 @@
-### Laboratorium 2 - 26 IV 2022
+### Laboratorium 2 - 04 V 2022
 # Zadanie  - Metoda Lagrange'a
 a) Zdefinuj funkcję f(x) = 8x<sub>1</sub><sup>4</sup> -7x<sub>2</sub><sup>3</sup> -2<sub>3</sub> <sup>2</sup> -x<sub>4</sub><sup>2</sup> 
 ```matlab
