@@ -1,52 +1,42 @@
 ### Laboratorium 4 - 17 V 2022
-# Zadanie  - Metoda Newtona - Raphsona
+# Zadanie  - Metoda Bisekcji
 ## Napisz skrypt, który znajdzie miejsce zerowej wybranej funkcji
-a) Zadeklaruj funkcję (wykorzystaj polecenie __syms__)
+a) Sprawdź, czy w podanym przedziale mogą znajdować się miejsca zerowe. Jeżeli nie, zmień zakres.
 ```matlab
-syms x
-```
-b) Zadeklaruj miejsce, od którego rozpocznie się poszukiwanie
-```matlab
-x0 = 2
-```
-c) Zadeklaruj wartość dokładności obliczeń
-```matlab
-error = 0.001;
-```
-d) Oblicz pochodną funkcji
-```matlab
-df=diff(f,x);
-```
-e) Sprawdź czy wartość pochodnej funkcji dla miejsca, od którego mają się zacząć poszukiwania jest różna od 0. Jeżeli nie jest, to przerwij w tym momencie program; jeżeli jest, przejdź dalej
-```matlab
-if diff(f,x) ~= 0
-    % dalsza część kodu
-else
-    return
+% Dodatkowe zmienne potrzebne później
+syms x;
+odchylka = 0.001; % odchyłka wyniku
+x1 = 2; % wartość minimalna
+x2 = 10; % wartość maksymalna
+f(x) = ; % tutaj trzeba wpisać swoją funkcję
+% Koniec sekcji dla dodatkowych zmiennych
+
+x0 = (a+b)/2;
+if f(x0) ~= 0
+    % Wylosuj inne a i b
 end
 ```
-f) Wyznacz wartość funkcji w punkcie x
+b) Oblicz początkową wartość x0
 ```matlab
-    % w pętli po przejściu ifa z kroku e
-    f(x) = sin(2*x) * cos(x) % wpisać własną funkcję
+x0 = (a+b)/2;
 ```
-g) Wyznacz wartość pochodnej funkcji w punkcie x <sub>i</sub>
+c) Oblicz wartość funkcji w punkcie x0
 ```matlab
- % w pętli po przejściu ifa z kroku e
-    df=diff(f,x);
+    fx0 = f(x0)
 ```
-h) Oblicz kolejne przybliżenie rozwiązania:<br> <img src="https://latex.codecogs.com/svg.image?{\color{Red}&space;x_{i}&space;=&space;x_{i}&space;-&space;\frac{f(x_{i})}{f'(x_{i})}&space;}"/> 
+d) Sprawdź czy f(x0) * f(x1) < 0, Jeżeli tak to za x2 przyjmij x0, w przeciwnym przypadku x1 = x0;
 ```matlab
-% w pętli po przejściu ifa z kroku e
-            x0 = x0 - (f(x0) /df(x0))
-            f(x0)
+if fx0*f(x1) < 0
+    x2 = x0;
+    else
+       x1 = x0;
+    end
 ```
-
-i) Sprawdź czy wartość bezwzględna jest zmierzona od wcześniej zdefiniowanej doładności. Jeżeli tak, to zakończ program; jeżeli nie to potwórz kroki f-i
+e) Oblicz wartość f(x0) i sprawdż czy jest mniejsza od zadeklarowanej wartości odchyłki. Jeżeli tak, to zakończ działanie skryptu, w przeciwnym wypadku powróć do punktu a
 ```matlab
-    % warunek pętli while
-    while abs(f(x0)) > error
-        % tutaj kod z podpunktów f,g,h
+while abs(fx0) > odchylka
+    % kod z podpuntków c,d,e
+end
 ```
 ## Cały kod:
 ```matlab
@@ -54,20 +44,33 @@ clear
 clc
 
 syms x
-x0 = 2
-error = 0.001;
-f(x) = ((x+1)/2) - 2*(x^2-1)
-    if diff(f,x) ~= 0
-        while abs(f(x0)) > error
-            df=diff(f,x);
-            x0 = x0 - (f(x0) /df(x0))
-            f(x0)
-    else 
-        return
+% poczatkowy przedzial
+x1 = 2
+x2 = 10
+% rownanie
+f(x) = x.^2-3*x-9
+% odchylka
+odchylka = 0.001;
+% podpunkt b
+x0 = (a+b)/2;
+% podpunkt c
+fx0 = f(x0);
+% podpunkt e
+while abs(fx0) > odchylka
+    fx0 = f(x0); % podpunkt c
+    % podpunkt d
+    if fx0*f(a) < 0
+    x2 = x0;
+    else
+       x1 = x0;
     end
+    x0 = (a+b)/2; % podpunkt b
 end
-X = x0:1:10
-F = ((X+1)/2) - 2.*(X.^2-1)
-plot(X,F)
+x0
+double(f(x0))
+% X = a:1:b
+% F = X^2-3*X-9
+% plot(X,F)
+
 
 ```
