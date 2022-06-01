@@ -3,21 +3,21 @@
 ## Znajdź miejsce zerowe poniższych funkcji przy pomocy napisanego przez siebie algorytmu z poprzednich zajęć oraz przy pomocy polecenia __fzero()__
 
  a) sin(x) <br>
- b) x^2-3x-9 <br>
- c) sin(x)+cos(√3x) <br>
- d) x^3-6x^2+4x+12 <br>
- e) -3x-5 <br>
- f) x^2/2 - 3x+3 <br>
- g) x+1/2 -2(x^2-1) <br>
- h) x^3+8x^2-5 <br>
- i) sin(x)e^x <br>
- j) sin(x^2)cos(x) <br>
- k) x^4-4x^3 <br>
+ b) x^2-3*x-9 <br>
+ c) sin(x)+cos(sqrt(3)*x) <br>
+ d) x^3-6*(x^2)+4*x+12 <br>
+ e) -3*x-5 <br>
+ f) (x^2)/2 - 3*x+3 <br>
+ g) (x+1)/2 -2*(x^2-1) <br>
+ h) x^3+8*(x^2)-5 <br>
+ i) sin(x)*e^x <br>
+ j) sin(x^2)*cos(x) <br>
+ k) x^4-4*x^3 <br>
  l) (x^2-5)(x^2-3)-3 <br>
- m) cos(2x)+e^x/2 - 5 <br>
- n) log10(x)-3sin(x) <br>
- o) log10(x)-sin(x^2)+0,75 <br>
- p) ln(x)*sin(x)-cos(3x) <br>
+ m) cos(2*x)+e^x/2 - 5 <br>
+ n) log10(x)-3*sin(x) <br>
+ o) log10(x)-sin(x^2)+0.75 <br>
+ p) log(x)*sin(x)-cos(3*x) <br>
 
 ## Cały kod:
 ```matlab
